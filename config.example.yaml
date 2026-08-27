@@ -1,0 +1,39 @@
+# Copy this file to config.yaml and fill in your own values.
+# config.yaml is gitignored — it never gets committed or pushed.
+
+location:
+  city: "Cambridge"
+  state: "MA"
+  # Search radius in miles
+  radius: 15
+
+# Ticketmaster Discovery API (free tier, instant signup):
+# https://developer.ticketmaster.com/product/discovery-api/
+ticketmaster:
+  api_key: "YOUR_TICKETMASTER_API_KEY"
+  # Ticketmaster "segment/genre" classification for family-friendly events
+  classification: "Miscellaneous,Family"
+
+# Optional: local library / park district calendars that publish iCal or RSS feeds.
+# Add as many as you like — most public library systems have one.
+feeds:
+  - name: "Cambridge Public Library"
+    url: "https://www.cambridgema.gov/events/rss.aspx"
+  - name: "Boston Parks & Rec"
+    url: "https://www.boston.gov/events/rss"
+  - name: "Somerville Public Library"
+    url: "https://somervillepubliclibrary.assabetinteractive.com/calendar/upcoming-events.rss"
+  - name: "Medford Public Library"
+    url: "https://medfordlibrary.assabetinteractive.com/calendar/upcoming-events.rss"
+  - name: "Malden Public Library"
+    url: "https://maldenpubliclibrary.assabetinteractive.com/calendar/upcoming-events.rss"
+
+# Rough age range this digest is curated for (used in the Claude scoring prompt)
+child_age_range: "2-4 years old (toddler)"
+
+email:
+  to: "you@example.com"
+  from_name: "Weekend Events Digest"
+
+# How many events to include in the final digest, max
+max_events: 8
