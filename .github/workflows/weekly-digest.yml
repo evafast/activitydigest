@@ -23,9 +23,9 @@ jobs:
         run: |
           cat > config.yaml << EOF
           location:
-            city: "${{ vars.EVENT_CITY }}"
-            state: "${{ vars.EVENT_STATE }}"
-            radius: ${{ vars.EVENT_RADIUS || 15 }}
+            city: "${{ vars.EVENT_CITY || 'Somerville' }}"
+            state: "${{ vars.EVENT_STATE || 'MA' }}"
+            radius: ${{ vars.EVENT_RADIUS || 100 }}
           ticketmaster:
             api_key: "${{ secrets.TICKETMASTER_API_KEY }}"
             classification: "Miscellaneous,Family"

@@ -2,10 +2,10 @@
 # config.yaml is gitignored — it never gets committed or pushed.
 
 location:
-  city: "Cambridge"
+  city: "Somerville"
   state: "MA"
-  # Search radius in miles
-  radius: 15
+  # Approximate search radius in miles (not driving time).
+  radius: 100
 
 # Ticketmaster Discovery API (free tier, instant signup):
 # https://developer.ticketmaster.com/product/discovery-api/
@@ -14,8 +14,7 @@ ticketmaster:
   # Ticketmaster "segment/genre" classification for family-friendly events
   classification: "Miscellaneous,Family"
 
-# Optional: local library / park district calendars that publish iCal or RSS feeds.
-# Add as many as you like — most public library systems have one.
+# Optional: Greater Boston library, parks, and city RSS/iCal feeds.
 feeds:
   - name: "Cambridge Public Library"
     url: "https://www.cambridgema.gov/events/rss.aspx"
@@ -26,7 +25,9 @@ feeds:
   - name: "Medford Public Library"
     url: "https://medfordlibrary.assabetinteractive.com/calendar/upcoming-events.rss"
   - name: "Malden Public Library"
-    url: "https://maldenpubliclibrary.assabetinteractive.com/calendar/upcoming-events.rss"
+    url: "https://maldenlibrary.assabetinteractive.com/calendar/upcoming-events.rss"
+  - name: "City of Somerville"
+    url: "https://www.somervillema.gov/events/feed.xml"
 
 # Rough age range this digest is curated for (used in the Claude scoring prompt)
 child_age_range: "2-4 years old (toddler)"

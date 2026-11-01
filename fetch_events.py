@@ -52,18 +52,22 @@ def fetch_ticketmaster(config):
 
     results = []
     for e in events:
-        venue = ""
-        try:
-            venue = e["_embedded"]["venues"][0]["name"]
-        except (KeyError, IndexError):
-            pass
+        venues = e.get("_embedded", {}).get("venues", [])
+        venue = venues[0] if venues else {}
+        venue_name = venue.get("name", "")
+        venue_city = (venue.get("city") or {}).get("name", "")
+        venue_state = (venue.get("state") or {}).get("stateCode", "")
+        venue_location = ", ".join(
+            part for part in (venue_name, venue_city, venue_state) if part
+        )
+
         results.append(
             {
                 "source": "Ticketmaster",
                 "title": e.get("name"),
                 "date": e.get("dates", {}).get("start", {}).get("localDate"),
                 "time": e.get("dates", {}).get("start", {}).get("localTime"),
-                "venue": venue,
+                "venue": venue_location,
                 "url": e.get("url"),
                 "description": e.get("info", "") or e.get("pleaseNote", ""),
             }
