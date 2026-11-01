@@ -29,8 +29,20 @@ jobs:
           ticketmaster:
             api_key: "${{ secrets.TICKETMASTER_API_KEY }}"
             classification: "Miscellaneous,Family"
-          feeds: []
-          child_age_range: "${{ vars.CHILD_AGE_RANGE || '1-3 years old (toddler)' }}"
+          feeds:
+            - name: "Cambridge Public Library"
+              url: "https://www.cambridgema.gov/events/rss.aspx"
+            - name: "Boston Parks & Rec"
+              url: "https://www.boston.gov/events/rss"
+            - name: "Somerville Public Library"
+              url: "https://somervillepubliclibrary.assabetinteractive.com/calendar/upcoming-events.rss"
+            - name: "Medford Public Library"
+              url: "https://medfordlibrary.assabetinteractive.com/calendar/upcoming-events.rss"
+            - name: "Malden Public Library"
+              url: "https://maldenlibrary.assabetinteractive.com/calendar/upcoming-events.rss"
+            - name: "City of Somerville"
+              url: "https://www.somervillema.gov/events/feed.xml"
+          child_age_range: "${{ vars.CHILD_AGE_RANGE || '2-4 years old (toddler)' }}"
           email:
             to: "${{ secrets.DIGEST_EMAIL_TO }}"
             from_name: "Weekend Events Digest"
